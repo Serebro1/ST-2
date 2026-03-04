@@ -1,6 +1,8 @@
 // Copyright 2022 UNN-CS
 #include <cstdint>
 #include <cmath>
+#include <utility>
+
 #include "circle.h"
 #include "tasks.h"
 
@@ -19,10 +21,16 @@ double earthRopeTask() {
 double poolWalkwayCostTask() {
   Circle pool(3.0);
   Circle poolWithFence(4.0);
-  return 1000.0 * (poolWithFence.getArea() - pool.getArea());
+  double result = 1000.0 * (poolWithFence.getArea() - pool.getArea());
+  return std::round(result * 100.0) / 100.0;
 }
 
 double poolFenceCostTask() {
   Circle poolWithFence(4.0);
-  return poolWithFence.getFerence() * 2000.0;
+  double result = poolWithFence.getFerence() * 2000.0;
+  return std::round(result * 100.0) / 100.0;
+}
+
+std::pair<double, double> poolWalkwayAndFenceCostTask() {
+  return std::make_pair(poolWalkwayCostTask(), poolFenceCostTask());
 }

@@ -11,6 +11,8 @@ class Circle {
   double ference;
   double area;
 
+  void recalcFromRadius(double r);
+
  public:
   explicit Circle(double _rad);
 
